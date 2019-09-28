@@ -32,7 +32,7 @@ body {
     grid-area: drum-machine;
     align-self: center;
   }
-  #by {
+  .by {
     grid-area: by;
     font-size: 1.2rem;
     font-family: $orbitron;
@@ -44,6 +44,19 @@ body {
         text-decoration: underline;
       }
     }
+  }
+
+  animation: enter 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
