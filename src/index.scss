@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css?family=Orbitron&display=swap");
+
+$orbitron: "Orbitron", sans-serif;
+
+$lightBlue: #3c93ff;
+$darkShadow: #1d1d1d;
+$border: 2px solid #dbdbdb;
+$border-radius: 12px;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  transition: all 0.15s linear;
+}
+
+body {
+  font-size: 1rem;
+  background-color: #343434;
+  color: white;
+  height: 100vh;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90% 10%;
+  justify-items: center;
+  grid-template-areas:
+    "drum-machine"
+    "by";
+  #drum-machine {
+    grid-area: drum-machine;
+    align-self: center;
+  }
+  #by {
+    grid-area: by;
+    font-size: 1.2rem;
+    font-family: $orbitron;
+    letter-spacing: 2px;
+    a {
+      color: #3cc8ff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+h1,
+h2,
+p {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+p {
+  font-size: 0.85rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.clearfix:after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* #drum-machine {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+} */
+
+.drum-wrapper {
+  height: 370px;
+  width: 820px;
+  background: linear-gradient(to bottom right, #3c3c3c 0%, #020202 100%);
+  border: $border;
+  padding: 10px;
+  border-radius: $border-radius;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 2fr 2fr 1fr;
+  grid-gap: 10px;
+}
+
+// Drum Pads
+#drum-pads {
+  grid-area: 2 / 1 / 5 / 4;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 6px;
+  border: $border;
+  border-radius: $border-radius;
+
+  .pad-q {
+    grid-area: 1 / 1 / 2 / 2;
+    box-shadow: 2px 2px 2px 1px $lightBlue, 4px 4px 10px 0px $darkShadow;
+  }
+  .pad-w {
+    grid-area: 1 / 2 / 2 / 3;
+    box-shadow: 0px 2px 2px $lightBlue, 0px 4px 10px 0px $darkShadow;
+  }
+  .pad-e {
+    grid-area: 1 / 3 / 2 / 4;
+    box-shadow: -1px 2px 2px $lightBlue, -4px 4px 10px 0px $darkShadow;
+  }
+  .pad-a {
+    grid-area: 2 / 1 / 3 / 2;
+    box-shadow: 2px 0px 2px $lightBlue, 4px 0px 10px 0px $darkShadow;
+  }
+  .pad-s {
+    grid-area: 2 / 2 / 3 / 3;
+    box-shadow: 0px 0px 2px $lightBlue, 0px 0px 10px 0px $darkShadow;
+  }
+  .pad-d {
+    grid-area: 2 / 3 / 3 / 4;
+    box-shadow: -2px 0px 2px $lightBlue, -4px 0px 10px 0px $darkShadow;
+  }
+  .pad-z {
+    grid-area: 3 / 1 / 4 / 2;
+    box-shadow: 1px -2px 2px $lightBlue, 4px -4px 10px 0px $darkShadow;
+  }
+  .pad-x {
+    grid-area: 3 / 2 / 4 / 3;
+    box-shadow: 0px -1px 2px $lightBlue, 0px -4px 10px 0px $darkShadow;
+  }
+  .pad-c {
+    grid-area: 3 / 3 / 4 / 4;
+    box-shadow: -2px -1px 2px $lightBlue, -4px -4px 10px 0px $darkShadow;
+  }
+}
+
+.drum-pad {
+  width: 100%;
+  height: 100%;
+  outline: 0;
+  border: 0;
+  border-radius: $border-radius;
+  font-size: 2.5rem;
+  background-color: #262626;
+  font-family: $orbitron;
+  cursor: pointer;
+}
+
+// Volume slider
+#volumen {
+  grid-area: 5 / 1 / 6 / 3;
+  margin: 0;
+  padding: 5px;
+  @extend .flex;
+  justify-content: flex-end;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  background: linear-gradient(to bottom, #939393 0%, #686868 100%);
+  outline: none;
+  border-radius: 20px;
+  margin: 0 auto;
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 32px;
+    background: $lightBlue;
+    cursor: pointer;
+    border: 0;
+    border-radius: 12px;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 32px;
+    background: $lightBlue;
+    cursor: pointer;
+    border: 0;
+  }
+}
+
+// Title
+#title {
+  grid-area: 1 / 1 / 2 / 3;
+  margin: auto;
+  height: 100%;
+  width: 80%;
+  border-radius: $border-radius;
+  background-color: #262626;
+  box-shadow: 0px 0px 4px 3px $lightBlue,
+    inset 0px -2px 10px 1px lighten($darkShadow, 5%);
+  h1 {
+    font-family: $orbitron;
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+}
+
+// Display
+#display {
+  grid-area: 5 / 3 / 6 / 4;
+  padding: 2px;
+  font-family: $orbitron;
+  box-shadow: inset 0px 0px 20px $darkShadow;
+  border: $border;
+  border-radius: $border-radius;
+  background: linear-gradient(
+    to bottom left,
+    $lightBlue 0%,
+    $lightBlue 40%,
+    darken($lightBlue, 30%) 60%,
+    darken($lightBlue, 30%) 100%
+  );
+}
+
+// POWER
+#on {
+  grid-area: 1 / 3 / 2 / 4;
+  height: 100%;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 12px;
+  position: relative;
+  font-size: 2em;
+  box-shadow: 0px 0px 4px #f02424, 0px 0px 10px 0px $darkShadow;
+  label {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(#595959, #262626);
+    color: #f02424;
+    text-shadow: 0px 0px 10px #f02424;
+    border-radius: inherit;
+  }
+  input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 100;
+    position: absolute;
+    cursor: pointer;
+    &:checked + label {
+      background: linear-gradient(#262626, #605d5d);
+      box-shadow: 0px 0px 8px $lightBlue, 0px 0px 10px 0px $darkShadow,
+        inset 0px 0px 10px $darkShadow;
+    }
+    &:checked + label .fa-power-off {
+      color: $lightBlue;
+      text-shadow: 0px 0px 10px $lightBlue;
+    }
+  }
+}
